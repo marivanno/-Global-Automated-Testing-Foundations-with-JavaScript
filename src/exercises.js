@@ -50,7 +50,7 @@ const fromArrayToConsole = (arr) => arr.forEach((film) => console.log(film));
 const makeStringAndThenMakeArray = (cars) => cars.join(',').split(',');
 const addWordHello = (acquaintances) => acquaintances.map((acquaintance) => `Hello ${acquaintance}`);
 const fromNumberToBoolian = (arr) => arr.map((num) => !!num);
-const sortMinToMax = (arr) => arr.sort((numFirst, numSecond) => numSecond - numFirst);
+const sortMaxToMin = (arr) => arr.sort((numFirst, numSecond) => numSecond - numFirst);
 const filterValue3 = (arr) => arr.filter((num) => num > 3);
 const findOutIndex = (arr, num) => arr.indexOf(num);
 const consoleLogA = (a) => {
@@ -101,13 +101,10 @@ function AnimalES5(move) {
 
 function CatES5(move) {
   AnimalES5.apply(this, move);
-  this.getMove = function () {
-    return this.move;
-  };
 }
 
 const findeMatches1 = (str) => str.match(/\a[\w\W]b/g);
-const findeMatches2 = (str) => str.match(/2\+3/);
+const findeMatches2 = (str) => str.match(/2\+3/g);
 
 const consoleLogCurrentDate = () => {
   const date = new Date();
@@ -119,18 +116,19 @@ const showError1 = () => {
     console.log(a);
     let a = 3;
   } catch (error) {
-    console.log(error)
+    console.log(error.message);
   }
-}
+};
 
 const showError2 = () => {
   try {
     const a = 1 / 0;
-    throw new Error('You can\'t to divid by 0')
+    throw new Error('You can\'t to divid by 0');
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 };
+
 
 export {
   executeConditionalStatementsAndDataTypes,
@@ -143,7 +141,7 @@ export {
   makeStringAndThenMakeArray,
   addWordHello,
   fromNumberToBoolian,
-  sortMinToMax,
+  sortMaxToMin,
   filterValue3,
   findOutIndex,
   consoleLogA,
@@ -158,4 +156,4 @@ export {
   findeMatches2,
   showError1,
   showError2,
-}
+};
