@@ -29,7 +29,10 @@ import {
 describe('firstPartATT', () => {
   beforeAll(() => {
     global.console.log = jest.fn();
-    global.console.error = jest.fn();
+  });
+
+  afterEach(() => {
+    console.log.mockReset();
   });
 
   it('string+boolean, string+number, number+boolean etc...', () => {
