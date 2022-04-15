@@ -10,7 +10,7 @@ import {
   addWordHello,
   fromNumberToBoolian,
   sortMaxToMin,
-  filterValue3,
+  filterValueBiggerThenThree,
   findOutIndex,
   consoleLogA,
   consoleLogPrime,
@@ -20,10 +20,10 @@ import {
   CatES5,
   CatES6,
   consoleLogCurrentDate,
-  findeMatches1,
-  findeMatches2,
-  showError1,
-  showError2,
+  findMatchesOne,
+  findMatchesTwo,
+  showErrorOne,
+  showErrorTwo,
 } from './exercises.js';
 
 describe('firstPartATT', () => {
@@ -66,10 +66,14 @@ describe('firstPartATT', () => {
     expect(console.log).toBeCalledWith('Hello Vlasislav!!!');
   });
 
-  it('getTypeOfArgument', () => {
-    expect(getTypeOfArgument(1)).toBe('number');
-    expect(getTypeOfArgument('string')).toBe('string');
-    expect(getTypeOfArgument(!!1)).toBe('boolean');
+  it('getTypeOfArgumentWithNumber', () => {
+    getTypeOfArgument(1)
+    expect(console.log).toBeCalledWith('number');
+  });
+
+  it('getTypeOfArgumentWithSreing', () => {
+    getTypeOfArgument('Chupakabra')
+    expect(console.log).toBeCalledWith('string');
   });
 
   it('isPrime', () => {
@@ -100,8 +104,8 @@ describe('firstPartATT', () => {
     expect(sortMaxToMin([10, 5, 9, 0])).toEqual([10, 9, 5, 0]);
   });
 
-  it('filterValue3', () => {
-    expect(filterValue3([1, 2, 3, 4, 5, 6, 7])).toEqual([4, 5, 6, 7]);
+  it('filterValueBiggerThenThree', () => {
+    expect(filterValueBiggerThenThree([1, 2, 3, 4, 5, 6, 7])).toEqual([4, 5, 6, 7]);
   });
 
   it('findOutIndex', () => {
@@ -134,24 +138,24 @@ describe('firstPartATT', () => {
 
   it('CatES6 and AnimalES6', () => {
     const Animal = new AnimalES6(10);
-    const Cat = new AnimalES6(10);
+    const Cat = new CatES6(10);
     expect(Animal).toEqual(Cat);
     expect(Animal.move).toBe(Cat.move);
   });
 
   it('CatES5 and AnimalES5', () => {
     const Animal = new AnimalES5(10);
-    const Cat = new AnimalES5(10);
+    const Cat = new CatES5(10);
     expect(Animal).toEqual(Cat);
     expect(Animal.move).toBe(Cat.move);
   });
 
-  it('findeMatches1', () => {
-    expect(findeMatches1('ahb acb aeb aeeb adcb axeb')).toEqual(['ahb', 'acb', 'aeb']);
+  it('findMatchesOne', () => {
+    expect(findMatchesOne('ahb acb aeb aeeb adcb axeb')).toEqual(['ahb', 'acb', 'aeb']);
   });
 
-  it('findeMatches2', () => {
-    expect(findeMatches2('2+3 223 2223')).toEqual(['2+3']);
+  it('findMatchesTwo', () => {
+    expect(findMatchesTwo('2+3 223 2223')).toEqual(['2+3']);
   });
 
   it('consoleLogCurrentDate', () => {
@@ -163,13 +167,13 @@ describe('firstPartATT', () => {
     });
   });
 
-  it('showError1', () => {
-    showError1()
+  it('showErrorOne', () => {
+    showErrorOne()
     expect(console.log).toBeCalledWith('Cannot access \'a\' before initialization');
   });
 
-  it('showError1', () => {
-    showError2()
-    expect(console.log).toBeCalledWith('You can\'t to divid by 0');
+  it('showErrorTwo', () => {
+    showErrorTwo(1, 0)
+    expect(console.log).toBeCalledWith('You can\'t to divide by 0');
   });
 });

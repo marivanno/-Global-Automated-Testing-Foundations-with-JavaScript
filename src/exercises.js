@@ -3,7 +3,7 @@
 const executeConditionalStatementsAndDataTypes = () => {
   const stringPlusBoolean = 'String' + true;
   const stringPlusNumber = 'String' + 42;
-  const divid = {
+  const divide = {
     stringDividBoolian: 'String' / false,
     stringDividNumber: 'String' / 42,
     numberDividBoolian: 42 / false,
@@ -15,7 +15,7 @@ const executeConditionalStatementsAndDataTypes = () => {
   };
 
   return {
-    stringPlusBoolean, stringPlusNumber, ...multiply, ...divid,
+    stringPlusBoolean, stringPlusNumber, ...multiply, ...divide,
   };
 };
 
@@ -33,7 +33,7 @@ const findOutName = (name) => {
   return name === savedName ? console.log(`Hello ${savedName}!!!`) : console.log(`There isn't ${name}!!!`);
 };
 
-const getTypeOfArgument = (arg) => typeof arg;
+const getTypeOfArgument = (arg) => console.log(typeof arg);
 
 const isPrime = (num) => {
   if (num === 1) {
@@ -51,7 +51,7 @@ const makeStringAndThenMakeArray = (cars) => cars.join(',').split(',');
 const addWordHello = (acquaintances) => acquaintances.map((acquaintance) => `Hello ${acquaintance}`);
 const fromNumberToBoolian = (arr) => arr.map((num) => !!num);
 const sortMaxToMin = (arr) => arr.sort((numFirst, numSecond) => numSecond - numFirst);
-const filterValue3 = (arr) => arr.filter((num) => num > 3);
+const filterValueBiggerThenThree = (arr) => arr.filter((num) => num > 3);
 const findOutIndex = (arr, num) => arr.indexOf(num);
 const consoleLogA = (a) => {
   let tmp = a;
@@ -100,18 +100,18 @@ function AnimalES5(move) {
 }
 
 function CatES5(move) {
-  AnimalES5.apply(this, move);
+  AnimalES5.apply(this, arguments);
 }
 
-const findeMatches1 = (str) => str.match(/\a[\w\W]b/g);
-const findeMatches2 = (str) => str.match(/2\+3/g);
+const findMatchesOne = (str) => str.match(/\a[\w\W]b/g);
+const findMatchesTwo = (str) => str.match(/2\+3/g);
 
 const consoleLogCurrentDate = () => {
   const date = new Date();
   date.toLocaleDateString().split('.').forEach((item) => console.log(item))
 };
 
-const showError1 = () => {
+const showErrorOne = () => {
   try {
     console.log(a);
     let a = 3;
@@ -120,15 +120,17 @@ const showError1 = () => {
   }
 };
 
-const showError2 = () => {
+const showErrorTwo = (a, b) => {
   try {
-    const a = 1 / 0;
-    throw new Error('You can\'t to divid by 0');
+    if (b === 0) {
+      throw new Error('You can\'t to divide by 0');
+    }
+    return a / b;
   } catch (error) {
     console.log(error.message);
+    return undefined;
   }
 };
-
 
 export {
   executeConditionalStatementsAndDataTypes,
@@ -142,7 +144,7 @@ export {
   addWordHello,
   fromNumberToBoolian,
   sortMaxToMin,
-  filterValue3,
+  filterValueBiggerThenThree,
   findOutIndex,
   consoleLogA,
   consoleLogPrime,
@@ -152,8 +154,8 @@ export {
   CatES5,
   CatES6,
   consoleLogCurrentDate,
-  findeMatches1,
-  findeMatches2,
-  showError1,
-  showError2,
+  findMatchesOne,
+  findMatchesTwo,
+  showErrorOne,
+  showErrorTwo,
 };
